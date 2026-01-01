@@ -1,0 +1,246 @@
+/* Main header container */
+.header-container {
+  width: 100%;
+  background: linear-gradient(to right, #f8b76d, #ffddc3);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #d4af37;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 12px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Inner wrapper */
+.inner-wrapper {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo + brand */
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #a45a05;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Navigation bar */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+/* Circle hover effect */
+.nav-link {
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  color: #563206;
+  padding: 10px 15px;
+  border-radius: 50px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  background: radial-gradient(circle, rgba(212,175,55,0.3), rgba(212,175,55,0));
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  border-radius: 50%;
+  z-index: 0;
+  opacity: 0;
+}
+
+.nav-link:hover::before {
+  width: 200%;
+  height: 200%;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.nav-link:hover {
+  color: #fc9207;
+  z-index: 1;
+  text-shadow: 0 0 6px #ffd900d6;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  background: #fff8f0;
+  border: 1px solid #d4af37;
+  border-radius: 12px;
+  padding: 8px 0;
+  width: 180px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  z-index: 100;
+  opacity: 0;
+  transform: translateY(-15px);
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px 15px;
+  font-size: 15px;
+  color: #5a3e1b;
+  text-decoration: none;
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.dropdown-item::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  background: radial-gradient(circle, rgba(212,175,55,0.25), rgba(212,175,55,0));
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  border-radius: 50%;
+  opacity: 0;
+  z-index: 0;
+}
+
+.dropdown-item:hover::before {
+  width: 300%;
+  height: 300%;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.dropdown-item:hover {
+  color: #ff9100;
+  z-index: 1;
+}
+
+/* Search box premium style */
+.search-box {
+  margin-left: 15px;
+}
+
+.search-input {
+  border: 1px solid #d4af37;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 14px;
+  background: #fffaf0;
+  box-shadow: 0 2px 6px rgba(212,175,55,0.2);
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 12px #ffd70088;
+  background: #fff8e0;
+}
+
+/* Cart hover effect */
+.cart-section {
+  position: relative;
+  margin-left: 15px;
+}
+
+.cart-icon {
+  font-size: 26px;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.cart-icon:hover {
+  transform: scale(1.2);
+  color: #ffd700;
+  text-shadow: 0 0 6px #ffd700;
+}
+
+/* Mobile toggle */
+.mobile-toggle {
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+  color: #b8860b;
+}
+
+.mobile-toggle:hover {
+  color: #ffd700;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  background: #fff8f0;
+  border-top: 1px solid #d4af37;
+  flex-direction: column;
+  padding: 15px;
+  gap: 10px;
+  animation: slideDown 0.4s ease forwards;
+}
+
+.mobile-item {
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #5a3e1b;
+  transition: all 0.3s ease;
+}
+
+.mobile-item:hover {
+  color: #ffd700;
+  text-shadow: 0 0 4px #ffd700;
+  transform: translateX(3px);
+}
+
+/* Mobile animation */
+@keyframes slideDown {
+  0% {opacity: 0; transform: translateY(-15px);}
+  100% {opacity: 1; transform: translateY(0);}
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .mobile-toggle {
+    display: block;
+  }
+  .mobile-menu {
+    display: flex;
+  }
+}

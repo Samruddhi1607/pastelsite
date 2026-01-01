@@ -1,0 +1,50 @@
+.trending-section {
+  padding: 50px 20px;
+  background-color: #fff0f5; /* light pink */
+  text-align: center;
+  overflow: hidden;
+}
+
+.trending-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #d4af37;
+}
+
+.trending-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  padding-bottom: 20px;
+  cursor: grab;
+}
+
+.trending-slider.active {
+  cursor: grabbing;
+}
+
+.trending-card {
+  min-width: 200px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
+}
+
+.trending-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+}
+
+.trending-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.trending-card h3 {
+  padding: 10px 0;
+  color: #333;
+}

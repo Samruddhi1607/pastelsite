@@ -1,0 +1,66 @@
+.about-section {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
+}
+
+/* TITLE */
+.about-title {
+  font-size: 42px;
+  color: #d4af37; /* golden */
+  margin-bottom: 10px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 1s ease;
+}
+
+/* PARAGRAPH */
+.about-text {
+  font-size: 18px;
+  color: #5e4b4b;
+  max-width: 800px;
+  margin: auto;
+  margin-bottom: 50px;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 1s ease;
+}
+
+/* GALLERY */
+.about-gallery {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.about-img {
+  width: 20%;
+  height: 250px; /* Proper height, adjust as needed */
+  object-fit: cover; /* Ensure image fits nicely */
+  border-radius: 18px;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: 0.5s ease, border 0.5s ease, border-radius 0.5s ease;
+  border: 2px solid transparent; /* Initial border invisible */
+}
+
+/* ---- VISIBLE CLASS ---- */
+.about-title.visible,
+.about-text.visible,
+.about-img.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* IMAGE HOVER EFFECT */
+.about-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+  border: 2px solid #d4af37; /* Golden border appears */
+  border-top-right-radius: 0; /* Top-right corner hover effect */
+  border-bottom-left-radius: 0; /* Bottom-left corner hover effect */
+}

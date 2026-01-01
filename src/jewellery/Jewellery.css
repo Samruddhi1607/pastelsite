@@ -1,0 +1,222 @@
+/* ============================= */
+/*        JEWELRY PAGE           */
+/* ============================= */
+.jewelry-page {
+  padding: 40px 20px;
+  background: #fffafc; /* soft premium background */
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+.jewelry-page h1 {
+  font-size: 36px;
+  background: linear-gradient(45deg, #d4af37, #f4c2d7);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 10px;
+}
+
+.jewelry-page p {
+  color: #7a5c5c;
+  margin-bottom: 40px;
+}
+
+/* ============================= */
+/*        FLEX GRID              */
+/* ============================= */
+.jewelry-flex {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+/* ============================= */
+/*        CARD ANIMATION         */
+/* ============================= */
+.jewelry-card {
+  position: relative;
+  width: 250px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  transform: translateY(40px);
+  animation: cardReveal 0.9s ease forwards;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+/* STAGGERED ANIMATION */
+.jewelry-card:nth-child(1) { animation-delay: 0.15s; }
+.jewelry-card:nth-child(2) { animation-delay: 0.35s; }
+.jewelry-card:nth-child(3) { animation-delay: 0.55s; }
+.jewelry-card:nth-child(4) { animation-delay: 0.75s; }
+
+@keyframes cardReveal {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ============================= */
+/*        GOLD BORDER            */
+/* ============================= */
+.jewelry-card::before,
+.jewelry-card::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  transition: width 1s ease, height 1s ease 0.5s;
+}
+
+.jewelry-card::before {
+  top: 0; left: 0; width: 0; height: 0;
+  border-top: 3px solid #d4af37;
+  border-right: 3px solid #d4af37;
+}
+
+.jewelry-card::after {
+  bottom: 0; right: 0; width: 0; height: 0;
+  border-bottom: 3px solid #d4af37;
+  border-left: 3px solid #d4af37;
+}
+
+.jewelry-card:hover::before,
+.jewelry-card:hover::after {
+  width: 100%; height: 100%;
+}
+
+/* ============================= */
+/*       CATEGORY BORDER COLORS  */
+/* ============================= */
+.jewelry-card.ring::before,
+.jewelry-card.ring::after { border-color: #d4af37; }
+.jewelry-card.necklace::before,
+.jewelry-card.necklace::after { border-color: #f4c2d7; }
+.jewelry-card.purse::before,
+.jewelry-card.purse::after { border-color: #fceabb; }
+.jewelry-card.perfume::before,
+.jewelry-card.perfume::after { border-color: #b19cd9; }
+
+/* ============================= */
+/*       IMAGE WRAPPER           */
+/* ============================= */
+.img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 240px; /* slightly bigger */
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+}
+
+/* MAIN & HOVER IMAGE */
+.img-main,
+.img-hover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ensures full visibility */
+  transition: all 1.2s ease;
+  display: block;
+}
+
+.img-hover {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+.jewelry-card:hover .img-hover {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.jewelry-card:hover .img-main {
+  opacity: 0.3;
+  transform: scale(1.05);
+}
+
+/* GOLD SHIMMER */
+.img-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 215, 0, 0.15) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 215, 0, 0.15) 100%
+  );
+  transform: translateX(-100%);
+  transition: transform 1.5s ease;
+}
+
+.jewelry-card:hover .img-wrapper::after {
+  transform: translateX(100%);
+}
+
+/* ============================= */
+/*         CART BUTTON           */
+/* ============================= */
+.cart-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #d4af37;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 6px;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.6s ease, transform 0.5s ease;
+}
+
+.jewelry-card:hover .cart-btn {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ============================= */
+/*        CARD INFO              */
+/* ============================= */
+.card-info {
+  padding: 12px 10px;
+  text-align: left;
+}
+
+.card-info h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: #4a2f2f;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 14px;
+  color: #d4af37;
+}
+
+.rating {
+  font-size: 12px;
+  color: #7a5c5c;
+}
+
+/* ============================= */
+/*       MOBILE FALLBACK         */
+/* ============================= */
+@media (max-width: 768px) {
+  .jewelry-card:hover::before,
+  .jewelry-card:hover::after,
+  .jewelry-card:hover .img-hover,
+  .jewelry-card:hover .cart-btn,
+  .img-wrapper::after {
+    transform: none;
+    opacity: 1;
+  }
+
+  .jewelry-card {
+    transform: none;
+    animation: none;
+  }
+}

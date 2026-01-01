@@ -1,0 +1,142 @@
+.reviews-container {
+  padding: 50px 30px;
+  background: linear-gradient(120deg, #fff0f5, #fff4de);
+  text-align: center;
+}
+
+.reviews-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  background: linear-gradient(45deg, #d4af37, #ffbad6);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Grid */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+/* Card */
+.review-card-hover {
+  background: #fff;
+  border-radius: 18px;
+  padding: 20px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+
+  /* Broken gold border initially */
+  border: 3px dashed #d4af37;
+  transition: all 0.6s ease;
+}
+
+/* Hover: shimmer animation border */
+.review-card-hover:hover {
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.review-card-hover:hover::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(270deg, #d4af37, #ffbad6, #fceabb, #d4af37);
+  background-size: 600% 600%;
+  animation: shimmer 4s ease infinite;
+  z-index: 0;
+}
+
+/* Inner content on top */
+.review-card-hover img,
+.review-card-hover .review-name,
+.review-card-hover .review-text,
+.review-card-hover .review-stars {
+  position: relative;
+  z-index: 1;
+}
+
+/* Photo */
+.review-photo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 8px;
+  border: 2px solid #d4af37;
+}
+
+/* Name initially blurred */
+.review-name {
+  font-weight: bold;
+  color: #3a2d2d;
+  filter: blur(3px);
+  transition: filter 0.5s ease;
+}
+
+/* Text hidden initially */
+.review-text {
+  opacity: 0;
+  font-size: 14px;
+  color: #5e4b4b;
+  line-height: 1.4;
+  margin-top: 8px;
+  transition: opacity 0.5s ease;
+}
+
+/* Stars hidden initially */
+.review-stars {
+  opacity: 0;
+  color: #d4af37;
+  margin-top: 6px;
+  font-size: 16px;
+  transition: opacity 0.5s ease;
+}
+
+/* Hover effects */
+.review-card-hover:hover .review-name {
+  filter: blur(0);
+}
+
+.review-card-hover:hover .review-text {
+  opacity: 1;
+}
+
+.review-card-hover:hover .review-stars {
+  opacity: 1;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+}
